@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  postgres:
+    container_name: gobank-db
+    image: bitnami/postgresql:15
+    user: "${UID}:${GID}"
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: docker
+      POSTGRES_DB: gobankdb
+      PGDATA: /bitnami/postgresql/data
+    volumes:
+      - ./data/pg:/bitnami/postgresql
